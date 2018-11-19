@@ -9,24 +9,26 @@
         </li>
 
         <li class="hi-logo hidden-xs">
-            <a href="{{ url('/') }}"> <img src="{{ URL::asset('img/software_logos/areas_verdes.png') }}" class="header-img"> Áreas verdes</a>
+            <a href="{{ url('/') }}"> <img src="{{ URL::asset('img/logo.png') }}" class="header-img"> Asesora.me</a>
         </li>
 
+        @if(!Auth::guest())
         <li class="pull-right">
             <ul class="hi-menu">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href=""><i class="him-icon zmdi zmdi-more-vert"></i></a>
+                    <a data-toggle="dropdown" href=""><i class="him-icon fa fa-ellipsis-v"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">
                         <li>
-                            <a href="{{ url('/perfil') }}"><i class="zmdi zmdi-face"></i> Mi perfil</a>
+                            <a href="{{ url('/perfil') }}"><i class="fa fa-child"></i> &nbsp; Mi perfil</a>
                         </li>
                         <li>
-                            <a href="{{ url('/logout') }}"><i class="zmdi zmdi-time-restore"></i> Cerrar sesión</a>
+                            <a href="{{ url('/logout') }}"><i class="fa fa-arrow-left"></i> &nbsp; Cerrar sesión</a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </li>
+        @endif
     </ul>
 
     <!-- Top Search Content -->

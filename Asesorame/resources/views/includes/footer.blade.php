@@ -1,5 +1,5 @@
 <footer id="footer">
-    Universidad Nacional Autonoma de México |  Todos los derechos reservados | privacidad | &copy; 2017
+    SMARTNET |  Todos los derechos reservados | privacidad | &copy; 2018
 
     <ul class="f-menu">
         <li><a href="">Home</a></li>

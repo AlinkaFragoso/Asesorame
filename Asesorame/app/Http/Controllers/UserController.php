@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -36,7 +38,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->nombre = $request->nombre;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->tipo = 'asesorado';
+        $user->save();
+        Auth::login($user);
+        return redirect('/mis_asesorias/solicitudes');
     }
 
     /**

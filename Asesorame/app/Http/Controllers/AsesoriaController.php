@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Asesoria;
+use App\Carrera;
+use Auth;
 
 class AsesoriaController extends Controller
 {
@@ -16,8 +18,8 @@ class AsesoriaController extends Controller
      */
     public function index()
     {
-        $asesorias = Asesoria::all();
-        return view('asesorias.list', compact('asesorias'));
+        $asesorias = Auth::user()->asesorias;
+        return view('asesor.asesorias.list', compact('asesorias'));
     }
 
     /**
@@ -38,7 +40,15 @@ class AsesoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $asesoria = new Asesoria();
+        $asesoria->carrera_id = $request->carrera;
+        $asesoria->estado = 'solicitada';
+        $asesoria->materia = $request->materia;
+        $asesoria->tema = $request->tema;
+        $asesoria->comentario = $request->comentario;
+        $asesoria->user_id = Auth::user()->id;
+        $asesoria->save();
+        return back();
     }
 
     /**
@@ -84,5 +94,26 @@ class AsesoriaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function listaAsesorado(){
+        $user = Auth::user();
+        $asesorias = $user->estado('aceptada');
+        $carreras = Carrera::all();
+        return view('asesorado.asesorias.list', compact('asesorias', 'carreras'));
+    }
+
+    public function historialAsesorado(){
+        $user = Auth::user();
+        $asesorias = $user->estado('finalizada');
+        $carreras = Carrera::all();
+        return view('asesorado.asesorias.historial', compact('asesorias', 'carreras'));
+    }
+
+    public function solicitudesAsesorado(){
+        $user = Auth::user();
+        $asesorias = $user->estado('solicitada');
+        $carreras = Carrera::all();
+        return view('asesorado.solicitudes.list', compact('asesorias', 'carreras'));
     }
 }

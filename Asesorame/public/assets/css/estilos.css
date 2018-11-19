@@ -1,0 +1,171 @@
+/* General Material template modifications */
+.s-profile > a{
+    background-image: url('../../img/user_bg.png');
+}
+
+.lcb-navigation a.l-register:hover {
+    width: 90px;
+}
+
+.lcb-navigation a[data-ma-block="#l-forget-password"]:hover {
+    width: 155px;
+}
+
+.lcb-navigation a[data-ma-block="#l-others"]:hover {
+    width: 127px;
+}
+
+.lcb-navigation a[data-ma-block="#l-login"]:hover {
+    width: 117px;
+}
+
+.lcb-navigation a[data-ma-block="#l-register-i"]:hover {
+    width: 140px;
+}
+
+#l-others > .lcb-form{
+	padding: 35px;
+}
+
+#footer a{
+	color: #a2a2a2;
+}
+
+.header-img{
+	max-height: 30px;
+	margin-right: 10px;
+}
+
+.logo-container{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.login-logo{
+	max-width: 50%;
+	box-shadow: 0 2px 5px rgba(0,0,0,.16),0 2px 10px rgba(0,0,0,.12);
+}
+
+.soft_title{
+	min-height: 3em;
+	display: inline-block;
+	color: white;
+}
+
+.black-link{
+	color: black;
+}
+
+.lcb-form{
+	background: rgba(255,255,255,.2);
+	box-shadow: none;
+}
+
+#l-login .form-control::-moz-placeholder, 
+#l-login .input-group-addon, 
+#l-login .form-control, 
+output, 
+.lcb-form p,
+.lcb-form .input-group-addon,
+.lcb-form input,
+#l-register input,
+#l-register-i input,
+.lc-block input::-webkit-input-placeholder, 
+.lc-block input::-moz-placeholder, 
+.lc-block input:-ms-input-placeholder, 
+.lc-block input:-moz-placeholder{
+	color: white;
+}
+
+.login-content{
+	background-color: #0d47a1;
+}
+
+#l-register .soft_title{
+	
+	font-weight: 100;
+}
+
+.software-logo{
+	box-shadow: 0 2px 5px rgba(0,0,0,.16),0 2px 10px rgba(0,0,0,.12);
+}
+
+#gmap {
+	height: 100%;
+	min-height: 300px;
+}
+
+.map_infowindow{
+	min-width: 400px;
+}
+
+.map_infowindow hr{
+	margin: 5px 0px;
+}
+
+a .popover_info{
+	color: black;
+}
+
+#content.content-full{
+	max-width: 95%;
+}
+
+.breadcrumb_full{
+	width: 100%;
+	padding-left: 5%;
+}
+
+/* DataTable fix */ 
+select[name=data-table_length], input[aria-controls=data-table]{
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.dataTables_filter, .dataTables_length{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.details_panel .btn{
+	text-align: left;
+}
+
+.second-level-card{
+	background-color: #f3f3f3;
+	box-shadow: none;
+}
+
+.file_container{
+	text-align: center;
+}
+.file_container .btn{
+	padding: 15px;
+	margin-bottom: 10px;
+}
+
+.file_container .btn-icon-delete{
+	padding: 0px;
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	line-height: 0px;
+}
+
+.stack-number{
+	margin-bottom: 20px;
+}
+.stack-number > .fa-stack{
+	margin-right: 10px;
+}
+.stack-number > .fa-stack > strong{
+	margin-top: -2px;
+	font-weight: normal;
+}
+.stack-number a{
+	color: white;
+}
+
+.alert.alert-danger h2{
+	color: white;
+}

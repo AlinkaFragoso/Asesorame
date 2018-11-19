@@ -1,0 +1,57 @@
+/*
+System specific styles
+
+Primary
+B2DFDB  <-- Primary light
+009688  <-- Primary
+00796B  <-- Primary dark
+
+Secondary
+8C9EFF  <-- Secondary light
+8C9EFF  <-- Secondary
+3D5AFE  <-- Secondary dark
+
+
+Others
+3F51B5  <-- Indigo 500
+00ACC1  <-- Cyan 600
+009688  <-- Teal 500
+4CAF50  <-- Green 500
+4CAF50  <-- Light Green 500
+D32F2F  <-- Red 700
+E64A19  <-- Deep Orange 700
+F57C00  <-- Orange 700
+*/
+
+
+/* Primary color */
+.login-content, #header{
+	background-color: #ED6B86;
+}
+
+/* Secondary color */
+.btn-success, .hi-menu > li > a > .him-counts{
+	background-color: #8C9EFF;
+}
+.register_alert{
+	color: #607D8B;
+	font-size: 1.3em;
+	background: rgba(255,255,255,.4);
+	padding: 10px;
+	margin-left: 40px;
+}
+
+.register_alert i{
+	font-size: 1.5em;
+}
+
+.bgm-modal{
+	background-color: #9EA6EF;
+}
+
+.bgm-pgreen,
+.actions.actions-alt > li.open > a > i,
+.actions.actions-alt > li > a > i,
+.actions.actions-alt > li > a > i:hover{
+	color: #009688;
+}

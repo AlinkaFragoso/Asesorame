@@ -23,4 +23,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function asesorias(){
+        return $this->hasMany('App\Asesoria');
+    }
+
+    public function pretty_type(){
+        switch ($this->tipo) {
+            case 'admin':
+                return 'Administrador';
+                break;
+            case 'asesor':
+                return 'Asesor';
+                break;
+            case 'asesorado':
+                return 'Asesorado';
+                break;
+        }
+    }
+
+    public function estado($estado){
+        return $this->hasMany('App\Asesoria')->where('estado', $estado)->get();
+    }
+
+    public function finalizadas(){
+        return $this->hasMany('App\Asesoria')->where('estado', 'finalizada')->get();
+    }
 }

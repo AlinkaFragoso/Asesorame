@@ -7,8 +7,8 @@
 <link href="{{ URL::asset('assets/material_admin/template/css/app_2.min.css') }}" rel="stylesheet">
 
 <!-- Styles -->
-<link href="{{ URL::asset('/assets/css/siunam.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('/assets/css/areas_verdes.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('/assets/css/estilos.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('/assets/css/asesorame.css') }}" rel="stylesheet">
 
 <!-- Scripts -->
 <script>
