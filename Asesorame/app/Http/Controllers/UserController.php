@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use Auth;
+use Session;
 
 class UserController extends Controller
 {
@@ -43,6 +44,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->tipo = 'asesorado';
+        $user->active = 1;
         $user->save();
         Auth::login($user);
         return redirect('/mis_asesorias/solicitudes');
@@ -117,5 +119,24 @@ class UserController extends Controller
     public function listAsesoradosAdmin(){
         $users = User::asesorados();
         return view('admin.users.listAsesorados', compact('users'));
+    }
+
+    public function formAsesor(){
+        return view('/auth.registerAsesor');
+    }
+
+    public function registroAsesor(Request $request){
+        $user = new User();
+        $user->nombre = $request->nombre;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->tipo = 'asesor';
+        $user->comment = $request->comentario;
+        $user->experiencia = $request->experiencia;
+        $user->active = 0;
+        $user->save();
+
+        Session::flash('flash_message_registro', 'Gracias por registrarte, ahora debes esperar a que tu solicitud como asesor sea aprobada.');
+        return back();
     }
 }

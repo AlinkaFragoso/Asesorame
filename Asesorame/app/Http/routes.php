@@ -28,12 +28,13 @@ Route::group(['as' => 'dashboard'], function(){
 
 Route::auth();
 
-//Route::get('/', 'HomeController@index');
-
+Route::get('/registro/asesor', 'UserController@formAsesor');
+Route::post('/registro/asesor', 'UserController@registroAsesor');
 Route::get('/mis_asesorias', 'AsesoriaController@listaAsesorado');
 Route::get('/mis_asesorias/solicitudes', 'AsesoriaController@solicitudesAsesorado');
 Route::get('/mis_asesorias/historial', 'AsesoriaController@historialAsesorado');
-//Route::post('/mis_asesorias', 'AsesoriaController@store');
+Route::get('/asesoria/{id}/aceptar', 'AsesoriaController@aceptarAsesoria');
+Route::get('/mis_asesorias/listado', 'AsesoriaController@listadoDeAsesor');
 Route::resource('/asesorias', 'AsesoriaController');
 
 Route::resource('/carreras', 'CarreraController');

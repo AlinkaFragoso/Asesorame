@@ -29,6 +29,7 @@
                             <th>Nombre</th>
                             <th>Email</th>
                             <th>Motivos</th>
+                            <th>Temas que domina</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,8 +41,9 @@
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </td>
                                     <td>{{ $user->nombre }}</td>
-                                    <td>{{ $user->emil }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td>{{ $user->comment }}</td>
+                                    <td>{{ $user->experiencia }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

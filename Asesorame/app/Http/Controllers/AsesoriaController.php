@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Asesoria;
 use App\Carrera;
 use Auth;
+use Session;
 
 class AsesoriaController extends Controller
 {
@@ -116,5 +117,28 @@ class AsesoriaController extends Controller
         $asesorias = $user->estado('solicitada');
         $carreras = Carrera::all();
         return view('asesorado.solicitudes.list', compact('asesorias', 'carreras'));
+    }
+
+    public function aceptarAsesoria($id){
+        $as = Asesoria::find($id);
+        $as->estado = 'aceptada';
+        $as->save();
+
+        $asesoria = new Asesoria();
+        $asesoria->user_id = Auth::user()->id;
+        $asesoria->carrera_id = $as->carrera_id;
+        $asesoria->estado = 'aceptada';
+        $asesoria->materia = $as->materia;
+        $asesoria->tema = $as->tema;
+        $asesoria->comentario = $as->comentario;
+        $asesoria->save();
+
+        Session::flash('flash_message_asesoria', '¡Gracias por aceptar la asesoría!');
+        return redirect('/mis_asesorias/listado');
+    }
+
+    public function listadoDeAsesor(){
+        $asesorias = Auth::user()->asesorias;
+        return view('asesor.asesorias.misAsesorias', compact('asesorias'));
     }
 }

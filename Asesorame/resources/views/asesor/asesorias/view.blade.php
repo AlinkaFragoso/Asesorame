@@ -23,17 +23,23 @@
             <div class="card-header">
                 <h2>Contacta al solicitante</h2>
             </div>
-
             <div class="card-body card-padding">
-                <strong>Carrera:</strong> {{ $asesoria->carrera->nombre }} </br>
-                <strong>Materia:</strong> {{ $asesoria->materia }} </br>
-                <strong>Tema:</strong> {{ $asesoria->tema }} </br>
-                <strong>Comentario:</strong> {{ $asesoria->comentario }} </br>
-                <strong>Estado:</strong> {{ $asesoria->pretty_status() }} </br>
-                <strong>Fecha creación:</strong> {{ $asesoria->pretty_date() }} </br></br>
-
-                <strong>Usuario:</strong> {{ $asesoria->usuario->nombre }} </br>
-                <strong>Email:</strong> {{ $asesoria->usuario->email }} </br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Carrera:</strong> {{ $asesoria->carrera->nombre }} </br>
+                        <strong>Materia:</strong> {{ $asesoria->materia }} </br>
+                        <strong>Tema:</strong> {{ $asesoria->tema }} </br>
+                        <strong>Comentario:</strong> {{ $asesoria->comentario }} </br>
+                        <strong>Estado:</strong> {{ $asesoria->pretty_status() }} </br>
+                        <strong>Fecha creación:</strong> {{ $asesoria->pretty_date() }} </br></br>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Usuario:</strong> {{ $asesoria->usuario->nombre }} </br>
+                        <strong>Email:</strong> {{ $asesoria->usuario->email }} </br>
+                    </br></br>
+                        <a class="btn btn-success waves-effect aceptar" href="{{ url('/asesoria/'.$asesoria->id.'/aceptar') }}">Aceptar asesoría</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -49,10 +55,10 @@
         $('#data-table').DataTable();
         });
 
-        $('.delete').on('click', function(e){
-            if(!confirm('¿Realmente quieres borrar este registro?')){
-                e.preventDefault();
-            }
+    $('.aceptar').on('click', function(e){
+        if(!confirm('¿Realmente quieres aceptar la asesoría?')){
+            e.preventDefault();
+        }
 
     });
 </script>

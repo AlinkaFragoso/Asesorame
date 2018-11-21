@@ -4,8 +4,8 @@ if (!Auth::guest()){
     if(Auth::user()->tipo == 'asesor'){
         //$menu[] = array('target' => '_self', 'url' => 'dashboard',  'icon' => 'home',   'text' => 'Dashboard');
         $menu[] = array('target' => '_self', 'url' => '/asesorias',   'icon' => 'clipboard',   'text' => 'Solicitudes');
-        //$menu[] = array('target' => '_self', 'url' => '/asesorias',   'icon' => 'edit',   'text' => 'Mis Asesorías');
-        $menu[] = array('target' => '_self', 'url' => '/asesorias/historial',   'icon' => 'history',  'text' => 'Mi historial');
+        $menu[] = array('target' => '_self', 'url' => '/mis_asesorias/listado',   'icon' => 'edit',   'text' => 'Mis Asesorías');
+        //$menu[] = array('target' => '_self', 'url' => '/asesorias/historial',   'icon' => 'history',  'text' => 'Mi historial');
     }elseif(Auth::user()->tipo == 'asesorado'){
         $menu[] = array('target' => '_self', 'url' => '/mis_asesorias/solicitudes',   'icon' => 'clipboard',   'text' => 'Mis Solicitudes');
         $menu[] = array('target' => '_self', 'url' => '/mis_asesorias',   'icon' => 'edit',  'text' => 'Mis Asesorías');

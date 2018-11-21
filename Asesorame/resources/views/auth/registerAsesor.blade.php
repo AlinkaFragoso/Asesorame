@@ -20,18 +20,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
+                        @if(Session::has('flash_message_registro'))
+                          <div class="alert alert-success" role="alert">{{ Session::get('flash_message_registro') }}</div>
+                        @endif
                         <div class="card">
                             <div class="card-header">
-                                <h2>Registro para solicitar asesorías</h2>
+                                <h2>Registro de asesor </h2>
                                 <div class="card-body card-padding">
-                                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/usuarios') }}">
+                                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/registro/asesor') }}">
                                         {{ csrf_field() }}
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="col-md-4 control-label">Nombre*</label>
 
                                             <div class="col-md-6">
-                                                <input id="name" type="text" class="form-control" name="nombre" maxlength="40" required>
+                                                <input id="name" type="text" class="form-control" name="nombre" maxlength="40">
 
                                                 @if ($errors->has('name'))
                                                 <span class="help-block">
@@ -83,16 +86,44 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label for="name" class="col-md-4 control-label">Cuéntanos por qué te gustaría ser asesor*</label>
+
+                                            <div class="col-md-6">
+                                                <textarea class="form-control" name="comentario" rows="5" placeholder="Porque..." required></textarea>
+
+                                                @if ($errors->has('name'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label for="name" class="col-md-4 control-label">¿Qué temas te gustaría impartir?*</label>
+
+                                            <div class="col-md-6">
+                                                <textarea class="form-control" name="experiencia" rows="5" placeholder="Temas..." required></textarea>
+
+                                                @if ($errors->has('name'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
                                         <div class="form-group text-center">
                                             <div class="col-md-6 col-md-offset-3">
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-btn fa-user"></i> Registrarse
+                                                    <i class="fa fa-btn fa-user"></i> Registrarme
                                                 </button>
                                             </div>
                                         </br></br>
                                         <div style="display: inline-block;">
                                             <a class="btn btn-link" href="{{ url('/login') }}">Iniciar sesión</a>
-                                            <a class="btn btn-link" href="{{ url('/registro/asesor') }}">Registro de asesor</a>
+                                            <a class="btn btn-link" href="{{ url('/register') }}">Registro de asesorado</a>
                                         </div>
                                         </div>
                                     </form>

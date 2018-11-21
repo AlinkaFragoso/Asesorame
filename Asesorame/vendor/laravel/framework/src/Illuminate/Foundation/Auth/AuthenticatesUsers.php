@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use Session;
 
 trait AuthenticatesUsers
 {
@@ -71,9 +72,24 @@ trait AuthenticatesUsers
 
         $credentials = $this->getCredentials($request);
 
-        if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
-            return $this->handleUserWasAuthenticated($request, $throttles);
+
+        // This section is the only change
+    if (Auth::validate($credentials)) {
+        $user = Auth::getLastAttempted();
+        if ($user->active == 1) {
+            Auth::login($user, $request->has('remember'));
+            return redirect()->intended($this->redirectPath());
+        } else {
+            Session::flash('flash_message_login', 'Tu cuenta debe estar activa para poder iniciar sesión.');
+            return redirect('/login'); // Change this to redirect elsewhere
         }
+    }
+
+
+        // if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
+        //     dd((Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))));
+        //     return $this->handleUserWasAuthenticated($request, $throttles);
+        // }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
@@ -142,7 +158,7 @@ trait AuthenticatesUsers
     {
         return Lang::has('auth.failed')
                 ? Lang::get('auth.failed')
-                : 'These credentials do not match our records.';
+                : 'Estas credenciales no coinciden con nuestros registros.';
     }
 
     /**
@@ -154,6 +170,7 @@ trait AuthenticatesUsers
     protected function getCredentials(Request $request)
     {
         return $request->only($this->loginUsername(), 'password');
+        //dd($cre);
     }
 
     /**
