@@ -39,7 +39,7 @@ class Asesoria extends Model
         }
     }
 
-    public static function estado($estado){
+    public static function asesoriasEstado($estado){
         return Asesoria::where('estado', $estado)->get();
     }
 }

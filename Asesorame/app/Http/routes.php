@@ -42,7 +42,13 @@ Route::resource('/materias', 'MateriaController');
 
 Route::resource('/temas', 'TemaController');
 
+Route::get('/usuarios/{id}/activar', 'UserController@aceptar');
+Route::get('/usuarios/{id}/rechazar', 'UserController@rechazar');
+Route::get('/usuarios/asesores', 'UserController@listAsesoresAdmin');
+Route::get('/usuarios/asesorados', 'UserController@listAsesoradosAdmin');
 Route::resource('/usuarios', 'UserController');
+
+Route::get('/solicitudes', 'UserController@listAdmin');
 
 //Auth::routes();
 // Route::get('/logout', function(){

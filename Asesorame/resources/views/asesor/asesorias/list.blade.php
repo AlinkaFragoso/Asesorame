@@ -3,14 +3,14 @@
 @section('breadcrum')
 <ol class="breadcrumb">
     <li><a href="{!! url('/') !!}">Inicio</a></li>
-    <li class="active">Mis asesorías</li>
+    <li class="active">Solicitudes de asesorías</li>
 </ol>
 @endsection
 
 @section('content')
 
 <div class="block-header">
-	<h2>Mis Asesorías</h2>
+	<h2>Solicitudes de Asesorías</h2>
 
     <!-- <div class="text-right">
         <a data-toggle="modal" href="#modalDefault" class="btn btn-sm btn-primary waves-effect">Solicitar asesoría</a>
@@ -19,14 +19,16 @@
 
 <div class="row">
     <div class="col-sm-12">
+        @if(count($asesorias))
         <div class="card">
             <div class="card-header">
                 <table id="data-table" class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th class="col-xs-1">&nbsp;</th>
-                            <th class="col-xs-1">&nbsp;</th>
+                            <th>Carrera</th>
+                            <th>Materia</th>
                             <th>Tema</th>
+                            <th>Comentario</th>
                             <th>Estado</th>
                             <th>Fecha creación</th>
                         </tr>
@@ -34,7 +36,7 @@
                     <tbody>
                         @foreach($asesorias as $asesoria)
                         <tr>
-                            <td>
+                            <!-- <td>
                                 <a href="{{ url('zonas/'.$asesoria->id) }}" target="_self">
                                     <button type="button" class="btn btn-default waves-effect popover_info" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="" title="" data-original-title="Ver detalle de {{ $asesoria->name }}">
                                         <i class="fa fa-list" aria-hidden="true"></i>
@@ -45,16 +47,29 @@
                                 <a href="{{ url('zonas/eliminar/'.$asesoria->id) }}" class="delete" target="_self">
                                     <button type="button" class="btn btn-default waves-effect popover_info" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="" title="" data-original-title="Eliminar {{ $asesoria->name }}">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </td>
-                                    <td>{{ $asesoria->tema->nombre }}</td>
+                                    </td> -->
+                                    <td>{{ $asesoria->carrera->nombre }}</td>
+                                    <td>{{ $asesoria->materia }}</td>
+                                    <td>{{ $asesoria->tema }}</td>
+                                    <td>{{ $asesoria->comentario }}</td>
                                     <td>{{ $asesoria->pretty_status() }}</td>
                                     <td>{{ $asesoria->pretty_date() }}</td>
+                                    <td>
+                                        <a href="{{ url('asesorias/'.$asesoria->id) }}" class="" target="_self">
+                                            <button type="button" class="btn btn-info waves-effect popover_info" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="" title="" data-original-title="Ver">
+                                            Contactar
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+                @else
+                <div class="block-header text-center">
+                	<h2>Aún no hay solicitudes de asesorías</h2>
+                </div>
+                @endif
             </div>
         </div>
 

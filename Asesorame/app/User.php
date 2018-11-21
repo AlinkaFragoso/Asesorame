@@ -49,4 +49,16 @@ class User extends Authenticatable
     public function finalizadas(){
         return $this->hasMany('App\Asesoria')->where('estado', 'finalizada')->get();
     }
+
+    public static function solicitudes(){
+        return User::where('tipo', 'asesor')->where('active', 0)->get();
+    }
+
+    public static function asesores(){
+        return User::where('tipo', 'asesor')->where('active', 1)->get();
+    }
+
+    public static function asesorados(){
+        return User::where('tipo', 'asesorado')->where('active', 1)->get();
+    }
 }

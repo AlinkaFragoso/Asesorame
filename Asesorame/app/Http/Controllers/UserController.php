@@ -88,8 +88,34 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function rechazar($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return back();
+    }
+
+    public function aceptar($id)
+    {
+        $user = User::find($id);
+        $user->active = 1;
+        $user->save();
+
+        return back();
+    }
+
+    public function listAdmin(){
+        $users = User::solicitudes();
+        return view('admin.users.list', compact('users'));
+    }
+
+    public function listAsesoresAdmin(){
+        $users = User::asesores();
+        return view('admin.users.listAsesores', compact('users'));
+    }
+
+    public function listAsesoradosAdmin(){
+        $users = User::asesorados();
+        return view('admin.users.listAsesorados', compact('users'));
     }
 }

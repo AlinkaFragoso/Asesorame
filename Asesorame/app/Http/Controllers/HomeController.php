@@ -27,12 +27,10 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->tipo == 'asesor'){
-            return view('asesor.asesorias.list', compact('asesorias'));
+            return redirect('/asesorias');
+        }elseif(Auth::user()->tipo == 'admin'){
+            return redirect('/solicitudes');
         }else{
-            // $user = Auth::user();
-            // $asesorias = $user->estado('solicitada');
-            // $carreras = Carrera::all();
-            // return view('asesorado.solicitudes.list', compact('asesorias', 'carreras'));
             return redirect('mis_asesorias/solicitudes');
         }
     }

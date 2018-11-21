@@ -18,7 +18,7 @@ class AsesoriaController extends Controller
      */
     public function index()
     {
-        $asesorias = Auth::user()->asesorias;
+        $asesorias = Asesoria::asesoriasEstado('solicitada');
         return view('asesor.asesorias.list', compact('asesorias'));
     }
 
@@ -59,7 +59,8 @@ class AsesoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $asesoria = Asesoria::find($id);
+        return view('asesor.asesorias.view', compact('asesoria'));
     }
 
     /**
